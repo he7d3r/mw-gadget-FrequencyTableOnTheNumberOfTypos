@@ -5,7 +5,7 @@
  */
 /*jslint browser: true, white: true, plusplus: true */
 /*global jQuery, mediaWiki, jsMsg */
-( function ( $, mw /* , undefined */ ) {
+( function ( $, mw ) {
 'use strict';
 
 var api;
@@ -27,7 +27,6 @@ function createEmptyTable() {
 }
 function getHitsFor( word, remainingList ) {
 	api.get( {
-		action: 'query',
 		list: 'search',
 		format: 'json',
 		srsearch: '"'+word+'"',
@@ -51,7 +50,6 @@ function getHitsFor( word, remainingList ) {
 
 function getListFromWikiText( page ){
 	api.get( {
-		action:'query',
 		prop:'revisions',
 		format:'json',
 		rvprop:'content',
