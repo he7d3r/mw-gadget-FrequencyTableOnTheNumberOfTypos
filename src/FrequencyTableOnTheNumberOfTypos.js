@@ -4,8 +4,8 @@
  * @tracking: [[Special:GlobalUsage/User:Helder.wiki/Tools/FrequencyTableOnTheNumberOfTypos.js]] ([[File:User:Helder.wiki/Tools/FrequencyTableOnTheNumberOfTypos.js]])
  */
 /*jslint browser: true, white: true, plusplus: true */
-/*global jQuery, mediaWiki, jsMsg */
-( function ( $, mw ) {
+/*global mediaWiki, jQuery */
+( function ( mw, $ ) {
 'use strict';
 
 var api;
@@ -15,10 +15,10 @@ function addRowToTable( word, hits ) {
 		'?profile=advanced&search=%22' + word + '%22&fulltext=Search&ns0=1&profile=advanced">' +
 		word + '</a></td><td>' + hits + '</tr>'
 	);
-	$( '#mw-js-message' ).find( 'table' ).tablesorter();
+	$('#mw-content-text').find( 'table' ).tablesorter();
 }
 function createEmptyTable() {
-	jsMsg(
+	$('#mw-content-text').prepend(
 		'<table id="search-results" class="wikitable sortable"><thead><tr>' +
 		'<th class="headerSort" title="Ordenar por ordem ascendente">Erro</th>' +
 		'<th class="headerSort" title="Ordenar por ordem ascendente">Total</th>' +
@@ -43,7 +43,7 @@ function getHitsFor( word, remainingList ) {
 			}
 		},
 		error: function () {
-			jsMsg('Ocorreu um erro. Por favor tente novamente.');
+			mw.notify('Ocorreu um erro. Por favor tente novamente.');
 		}
 	});
 }
@@ -76,7 +76,7 @@ function getListFromWikiText( page ){
 			getHitsFor( list.shift(), list);
 		},
 		error: function () {
-			jsMsg('Ocorreu um erro ao obter a lista de erros comuns. Por favor tente novamente.');
+			mw.notify('Ocorreu um erro ao obter a lista de erros comuns. Por favor tente novamente.');
 		}
 	});
 }
@@ -88,4 +88,4 @@ function run(){
 }
 $(run);
 
-}( jQuery, mediaWiki ) );
+}( mediaWiki, jQuery ) );
