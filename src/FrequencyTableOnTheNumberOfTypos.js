@@ -11,7 +11,7 @@
 var api;
 function addRowToTable( word, hits ) {
 	$('#search-results-body').append(
-		'<tr><td><a href="'+mw.util.wikiGetlink('Special:Search') +
+		'<tr><td><a href="'+mw.util.getUrl('Special:Search') +
 		'?profile=advanced&search=%22' + word + '%22&fulltext=Search&ns0=1&profile=advanced">' +
 		word + '</a></td><td>' + hits + '</tr>'
 	);
