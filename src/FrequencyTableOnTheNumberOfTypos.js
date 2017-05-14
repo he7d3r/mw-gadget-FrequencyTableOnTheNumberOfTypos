@@ -36,7 +36,7 @@
 		}, {
 			ok: function (data) {
 				addRowToTable( word, data.query.searchinfo.totalhits );
-				if (remainingList && $.isArray( remainingList ) && remainingList.length > 0 ) {
+				if (remainingList && Array.isArray( remainingList ) && remainingList.length > 0 ) {
 					getHitsFor( remainingList.shift(), remainingList);
 				}
 			},
